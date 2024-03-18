@@ -1,0 +1,25 @@
+{
+  "name": "solution-pioneers/magento-banner-slider",
+  "description": "SolutionPioneers Banner Slider Extension",
+  "require": {
+    "php": ">=8.0"
+  },
+  "type": "magento2-module",
+  "version": "1.0.1",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Solution Pioneers",
+      "email": "hello@solution-pioneers.com",
+      "homepage": "https://www.solution-pioneers.com"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "SolutionPioneers\\BannerSlider\\": ""
+    }
+  }
+}
