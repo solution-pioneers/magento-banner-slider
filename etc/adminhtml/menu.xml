@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+     <menu>
+        <add id="SolutionPioneers_BannerSlider::solutionpioneers_bannerslider_menu"
+            title="Banner Slider"
+            module="SolutionPioneers_BannerSlider"
+            sortOrder="100"
+            resource="SolutionPioneers_BannerSlider::solutionpioneers_bannerslider_menu"
+            parent="SolutionPioneers_Extension::solutionpioneers_extension_menu"
+            translate="true"
+        />
+        <add id="SolutionPioneers_BannerSlider::solutionpioneers_bannerslider_manage_banner"
+            title="Manage Banner"
+            module="SolutionPioneers_BannerSlider"
+            sortOrder="10"
+            resource="SolutionPioneers_BannerSlider::solutionpioneers_bannerslider_manage_banner"
+            parent="SolutionPioneers_BannerSlider::solutionpioneers_bannerslider_menu"
+            translate="true"
+            action="sp_bannerslider/banner/index"
+        />
+        <add id="SolutionPioneers_BannerSlider::solutionpioneers_bannerslider_manage_slider"
+            title="Manage Slider"
+            module="SolutionPioneers_BannerSlider"
+            sortOrder="10"
+            resource="SolutionPioneers_BannerSlider::solutionpioneers_bannerslider_manage_slider"
+            parent="SolutionPioneers_BannerSlider::solutionpioneers_bannerslider_menu"
+            translate="true"
+            action="sp_bannerslider/slider/index"
+        />
+    </menu>
+</config>
