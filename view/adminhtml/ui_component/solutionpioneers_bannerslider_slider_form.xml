@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/Ui/etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">solutionpioneers_bannerslider_slider_form.solutionpioneers_bannerslider_slider_form_data_source</item>
+            <item name="deps" xsi:type="string">solutionpioneers_bannerslider_slider_form.solutionpioneers_bannerslider_slider_form_data_source</item>
+            <item name="namespace" xsi:type="string">solutionpioneers_bannerslider_slider_form</item>
+        </item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">SolutionPioneers\BannerSlider\Block\Adminhtml\Slider\Edit\Buttons\Back</item>
+            <item name="delete" xsi:type="string">SolutionPioneers\BannerSlider\Block\Adminhtml\Slider\Edit\Buttons\Delete</item>
+            <item name="save" xsi:type="string">SolutionPioneers\BannerSlider\Block\Adminhtml\Slider\Edit\Buttons\Save</item>
+        </item>
+            <item name="label" xsi:type="string" translate="true">Slider Information</item>
+            <item name="config" xsi:type="array">
+                <item name="dataScope" xsi:type="string">data</item>
+                <item name="namespace" xsi:type="string">solutionpioneers_bannerslider_slider_form</item>
+            </item>
+            <item name="template" xsi:type="string">templates/form/collapsible</item>
+            <item name="childrenFromMeta" xsi:type="boolean">true</item>
+    </argument>
+
+    <dataSource name="solutionpioneers_bannerslider_slider_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">SolutionPioneers\BannerSlider\Ui\DataProvider\Form\SliderDataProvider</argument>
+            <argument name="name" xsi:type="string">solutionpioneers_bannerslider_slider_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">slider_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                <item name="submit_url" path="*/*/save" xsi:type="url" />
+            </item>
+        </argument>
+    </dataSource>
+
+    <fieldset name="general">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">General</item>
+            </item>
+        </argument>
+
+        <!-- This field represents form id and is hidden -->
+        <field name="slider_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">solutionpioneers_bannerslider_slider_form</item>
+                </item>
+            </argument>
+        </field>
+        <field name="banner_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">SolutionPioneers\BannerSlider\Ui\Component\Listing\Columns\Options\Banner</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Banner</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="dataScope" xsi:type="string">banner_id</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Title</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">solutionpioneers_bannerslider_banner_form</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="text">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="source" xsi:type="string">block</item>
+                    <item name="label" xsi:type="string">Description</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="dataScope" xsi:type="string">description</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="rows" xsi:type="number">8</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+         <field name="button_text">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Button Text</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">solutionpioneers_bannerslider_slider_form</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="url">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Url</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">solutionpioneers_bannerslider_slider_form</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="image">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">bannerslider</item>
+                    <item name="label" xsi:type="string" translate="true">Image</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="previewTmpl" xsi:type="string">SolutionPioneers_BannerSlider/image-preview</item>
+                    <item name="baseTmpPath" xsi:type="string">tmp/solutionpioneers/bannerslider</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="sp_bannerslider/slider_image/upload"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="mobile_image">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">bannerslider</item>
+                    <item name="label" xsi:type="string" translate="true">Mobile Image</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="previewTmpl" xsi:type="string">SolutionPioneers_BannerSlider/image-preview</item>
+                    <item name="baseTmpPath" xsi:type="string">tmp/solutionpioneers/bannerslider</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="sortOrder" xsi:type="number">70</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="sp_bannerslider/slider_image/upload"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

@@ -2,16 +2,16 @@
 
 namespace SolutionPioneers\BannerSlider\Ui\DataProvider\Form;
 
-use SolutionPioneers\BannerSlider\Model\ResourceModel\Banner\CollectionFactory;
+use SolutionPioneers\BannerSlider\Model\ResourceModel\Slider\CollectionFactory;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Filesystem\DirectoryList;
 
 /**
- * Class BannerDataProvider
+ * Class SliderDataProvider
  * 
  * @package SolutionPioners\BannerSlider\Ui\DataProvider\Form
  */
-class BannerDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
+class SliderDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
     /**
      * @var Magento\Framework\Filesystem\DirectoryList
@@ -29,7 +29,7 @@ class BannerDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     protected $_request;
 
     /**
-     * @var SolutionPioneers\BannerSlider\Model\ResourceModel\Banner\CollectionFactory
+     * @var SolutionPioneers\BannerSlider\Model\ResourceModel\Slider\CollectionFactory
      */
     protected $collectionFactory;
 
@@ -79,6 +79,24 @@ class BannerDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             foreach ($items as $item) {
                 $data = $item->getData();
 
+                /* Prepare Image */
+                $map = [
+                    'image' => 'getImage',
+                    'mobile_image' => 'getMobileImage',
+                ];
+
+                foreach ($map as $key => $method) {
+                    if (isset($data[$key]) && !empty($data[$key])) {
+                        $name = $data[$key];
+                        unset($data[$key]);
+                        $data[$key][0] = [
+                            'name' => $name,
+                            'url' => $this->getImageUrl($item->$method()),
+                            'size' => $this->getImageSize($item->$method())
+                        ];
+                    }
+                }
+
                 $this->loadedData[$item->getId()] = $data;
             }
         }
@@ -92,6 +110,29 @@ class BannerDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     public function addFilter(\Magento\Framework\Api\Filter $filter)
     {
         return null;
+    }
+
+    /**
+     * @param string $imagePath
+     * 
+     * @return string
+     */
+    protected function getImageUrl(string $image) 
+    {
+        return $this->storeManager->getStore()
+            ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'solutionpioneers/bannerslider/' . $image;
+    }
+
+    /**
+     * @param string $imagePath
+     * 
+     * @return int
+     */
+    protected function getImageSize(string $image) 
+    {
+        $path = $this->directoryList->getPath('media') . '/solutionpioneers/bannerslider/' . $image;
+        
+        return filesize($path);
     }
 
 }

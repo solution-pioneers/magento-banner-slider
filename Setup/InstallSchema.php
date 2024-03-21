@@ -94,7 +94,7 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
                     '255',
                     ['nullbale'=>false,'default'=>'']
                 )->addColumn(
-                    'text',
+                    'description',
                     Table::TYPE_TEXT,
                     '',
                     ['nullbale'=>false,'default'=>'']
