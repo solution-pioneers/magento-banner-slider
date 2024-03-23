@@ -20,4 +20,14 @@ class Collection extends AbstractCollection
             "SolutionPioneers\BannerSlider\Model\ResourceModel\Slider"
         );
 	}
+
+    /**
+     * @param int $bannerId
+     * 
+     * @return $this
+     */
+    public function addBannerFilter(int $bannerId)
+    {
+        return $this->addFieldToFilter('banner_id', $bannerId);
+    }
 }

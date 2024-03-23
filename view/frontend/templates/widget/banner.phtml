@@ -1,3 +1,35 @@
-<div>
-    TEST BANNER
+<?php $collection = $this->getSliderCollection() ?>
+<?php if ($collection->count()) :?>
+<div class="bannerslider-widget swiper">
+    <div class="swiper-wrapper">
+        <?php foreach ($collection as $item):?>
+            <div class="swiper-slide">
+                <img class="swiper-slide-img" src="<?php echo $block->getImagePath() . $item->getImage()?>" />
+                
+                <?php if ($item->getMobileImage()):?>
+                    <img class="swiper-slide-img-mobile" src="<?php echo $block->getImagePath() . $item->getMobileImage()?>" />
+                <?php endif?>
+                <?php if ($item->getDescription() || $item->getUrl()): ?>
+                    <div class="content">
+                        <?php if ($item->getDescription()): ?>
+                            <div class="description">
+                                <?php echo $item->getDescription()?>
+                            </div>
+                        <?php endif;?>
+                        <?php if ($item->getUrl()): ?>
+                            <div class="action">
+                                <a class="button primary" href="<?php echo $item->getUrl()?>" class="swiper-slide-button" >
+                                    <span><?php echo ($item->getButtonText())?: __('Shop now')?></span>
+                                </a>
+                            </div>
+                        <?php endif;?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        <?php endforeach;?>    
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
 </div>
+<?php endif; ?>
