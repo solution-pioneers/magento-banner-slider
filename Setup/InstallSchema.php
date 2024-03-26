@@ -119,6 +119,11 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
                     '',
                     ['nullbale'=>false,'default'=>'']
                 )->addColumn(
+                    'position',
+                    Table::TYPE_SMALLINT,
+                    '',
+                    ['nullbale'=>false,'default'=> '1']
+                )->addColumn(
                     'created_at',
                     Table::TYPE_TIMESTAMP,
                     null,

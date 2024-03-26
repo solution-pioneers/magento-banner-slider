@@ -43,7 +43,8 @@ class Banner extends Template implements BlockInterface {
 	public function getSliderCollection(): SliderCollection
 	{
 		return $this->collectionFactory->create()
-			->addBannerFilter($this->getBannerId());
+			->addBannerFilter($this->getBannerId())
+			->setOrder('position','ASC');
 	}
 
 	/**
