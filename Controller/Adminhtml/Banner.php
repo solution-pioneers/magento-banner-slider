@@ -5,9 +5,15 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
+use SolutionPioneers\BannerSlider\Model\BannerFactory;
  
 class Banner extends Action
 {
+    /**
+     * @var \SolutionPioneers\BannerSlider\Model\BannerFactory
+     */
+    protected $bannerFactory;
+
     /**
      * @var \Magento\Framework\Registry
      */
@@ -22,22 +28,22 @@ class Banner extends Action
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\Registry $coreRegistry
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \SolutionPioneers\BannerSlider\Model\BannerFactory $bannerFactory
      */
     public function __construct(
         Context $context,
         Registry $coreRegistry,
-        PageFactory $resultPageFactory
+        PageFactory $resultPageFactory,
+        BannerFactory $bannerFactory,
     ) {
+        $this->bannerFactory = $bannerFactory;
         $this->coreRegistry = $coreRegistry;
         $this->resultPageFactory = $resultPageFactory;
 
         parent::__construct($context);
     }
 
-    public function execute()
-    {
- 
-    }
+    public function execute(){}
  
     protected function _isAllowed()
     {

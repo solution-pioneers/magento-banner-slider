@@ -9,24 +9,6 @@ use SolutionPioneers\BannerSlider\Controller\Adminhtml\Slider;
 class Index extends Slider
 {
     /**
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Framework\Registry $coreRegistry
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
-     */
-    public function __construct(
-        Context $context,
-        Registry $coreRegistry,
-        PageFactory $resultPageFactory,
-    )
-    {
-        parent::__construct(
-            $context, 
-            $coreRegistry, 
-            $resultPageFactory, 
-        );
-    }
-
-    /**
      * @return \Magento\Framework\View\Result\PageFactory
      */
     public function execute()

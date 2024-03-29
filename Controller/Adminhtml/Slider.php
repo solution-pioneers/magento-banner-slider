@@ -5,6 +5,7 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
+use SolutionPioneers\BannerSlider\Model\SliderFactory;
  
 class Slider extends Action
 {
@@ -19,25 +20,30 @@ class Slider extends Action
     protected $resultPageFactory;
     
     /**
+     * @var \SolutionPioneers\BannerSlider\Model\SliderFactory
+     */
+    protected $sliderFactory;
+
+    /**
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\Registry $coreRegistry
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \SolutionPioneers\BannerSlider\Model\SliderFactory $sliderFactory
      */
     public function __construct(
         Context $context,
         Registry $coreRegistry,
-        PageFactory $resultPageFactory
+        PageFactory $resultPageFactory,
+        SliderFactory $sliderFactory,
     ) {
         $this->coreRegistry = $coreRegistry;
         $this->resultPageFactory = $resultPageFactory;
+        $this->sliderFactory = $sliderFactory;
 
         parent::__construct($context);
     }
 
-    public function execute()
-    {
- 
-    }
+    public function execute(){}
  
     protected function _isAllowed()
     {
