@@ -8,7 +8,7 @@ use Magento\Framework\Filesystem\DirectoryList;
 
 /**
  * Class BannerDataProvider
- * 
+ *
  * @package SolutionPioners\BannerSlider\Ui\DataProvider\Form
  */
 class BannerDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
@@ -34,10 +34,18 @@ class BannerDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     protected $collectionFactory;
 
     /**
+     * @var Magento\Store\Model\StoreManagerInterface
+     */
+    private StoreManagerInterface $storeManager;
+
+    /**
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
-     * @param array $meta
+     * @param \SolutionPioneers\BannerSlider\Model\ResourceModel\Banner\CollectionFactory $collectionFactory
+     * @param \Magento\Framework\App\RequestInterface $request
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Magento\Framework\Filesystem\DirectoryList $directoryList
      * @param array $data
      */
     public function __construct(
@@ -82,7 +90,7 @@ class BannerDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
                 $this->loadedData[$item->getId()] = $data;
             }
         }
-        
+
         return $this->loadedData;
     }
 

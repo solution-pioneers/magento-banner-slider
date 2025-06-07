@@ -8,7 +8,7 @@ use Magento\Framework\Filesystem\DirectoryList;
 
 /**
  * Class SliderDataProvider
- * 
+ *
  * @package SolutionPioners\BannerSlider\Ui\DataProvider\Form
  */
 class SliderDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
@@ -34,10 +34,18 @@ class SliderDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     protected $collectionFactory;
 
     /**
+     * @var Magento\Store\Model\StoreManagerInterface
+     */
+    private StoreManagerInterface $storeManager;
+
+    /**
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
-     * @param array $meta
+     * @param \SolutionPioneers\BannerSlider\Model\ResourceModel\Slider\CollectionFactory $collectionFactory
+     * @param \Magento\Framework\App\RequestInterface $request
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Magento\Framework\Filesystem\DirectoryList $directoryList
      * @param array $data
      */
     public function __construct(
@@ -100,7 +108,7 @@ class SliderDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
                 $this->loadedData[$item->getId()] = $data;
             }
         }
-        
+
         return $this->loadedData;
     }
 
@@ -114,10 +122,10 @@ class SliderDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 
     /**
      * @param string $imagePath
-     * 
+     *
      * @return string
      */
-    protected function getImageUrl(string $image) 
+    protected function getImageUrl(string $image)
     {
         return $this->storeManager->getStore()
             ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'solutionpioneers/bannerslider/' . $image;
@@ -125,13 +133,13 @@ class SliderDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 
     /**
      * @param string $imagePath
-     * 
+     *
      * @return int
      */
-    protected function getImageSize(string $image) 
+    protected function getImageSize(string $image)
     {
         $path = $this->directoryList->getPath('media') . '/solutionpioneers/bannerslider/' . $image;
-        
+
         return filesize($path);
     }
 
